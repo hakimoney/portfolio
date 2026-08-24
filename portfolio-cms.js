@@ -59,7 +59,7 @@
     <div class="cms-status" id="cms-status">● Modifications locales</div>
     <div class="cms-group"><div class="cms-group-title">ÉLÉMENT SÉLECTIONNÉ</div><div id="cms-fields" class="cms-empty">Aucun élément sélectionné</div><div class="cms-grid" id="cms-actions" hidden><button class="cms-btn" data-act="up">↑ Monter</button><button class="cms-btn" data-act="down">↓ Descendre</button><button class="cms-btn wide" data-act="duplicate">＋ Ajouter un élément similaire</button><button class="cms-btn danger" data-act="delete">Supprimer l’élément</button><button class="cms-btn danger" data-act="delete-block">Supprimer le bloc</button></div></div>
     <div class="cms-group"><div class="cms-group-title">AJOUTER</div><div class="cms-grid"><button class="cms-btn" data-add="text">Texte</button><button class="cms-btn" data-add="link">Lien</button><button class="cms-btn" data-add="image">Image</button><button class="cms-btn" data-add="section">Section</button></div></div>
-    <div class="cms-group"><div class="cms-group-title">DONNÉES</div><div class="cms-grid"><button class="cms-btn" data-act="export">Exporter JSON</button><label class="cms-file-label">Importer JSON<input id="cms-import" type="file" accept="application/json"></label><button class="cms-btn danger wide" data-act="reset">Restaurer l’original</button></div><div class="cms-help">La sauvegarde est conservée dans ce navigateur. Exportez le JSON pour garder une copie ou transférer le contenu.</div></div>`;
+    <div class="cms-group"><div class="cms-group-title">PUBLICATION</div><div class="cms-grid"><button class="cms-btn primary wide" data-act="export-html">Exporter le nouvel index.html</button><button class="cms-btn" data-act="export">Exporter JSON</button><label class="cms-file-label">Importer JSON<input id="cms-import" type="file" accept="application/json"></label><button class="cms-btn danger wide" data-act="reset">Restaurer l’original</button></div><div class="cms-help">Pour publier vos changements, exportez le nouvel index.html, remplacez celui du dépôt, puis faites un commit et un push.</div></div>`;
   document.body.appendChild(panel);
   const toast=document.createElement('div');toast.className='cms-toast';document.body.appendChild(toast);
   const fields=panel.querySelector('#cms-fields'), actions=panel.querySelector('#cms-actions');
@@ -101,6 +101,22 @@
   fields.addEventListener('focusin',checkpoint,{once:false});
   fields.addEventListener('input',e=>{if(!selected)return;const selector=e.target.dataset.selector;if(selector){const target=selected.matches(selector)?selected:selected.querySelector(selector);if(target){const attr=e.target.dataset.attr;if(attr)target.setAttribute(attr,e.target.value);else target.textContent=e.target.value}return}const f=e.target.dataset.field;if(f==='text')selected.textContent=e.target.value;else if(f==='rich')selected.innerHTML=markdownToHtml(e.target.value);else if(f)selected.setAttribute(f,e.target.value)});
   function sibling(dir){if(!selected)return;const target=dir<0?selected.previousElementSibling:selected.nextElementSibling;if(!target)return;checkpoint();if(dir<0)target.before(selected);else target.after(selected)}
+  async function exportHtml(){
+    const clone=document.documentElement.cloneNode(true);
+    clone.querySelectorAll('.cms-panel,.cms-toast').forEach(el=>el.remove());
+    clone.querySelector('body')?.classList.remove('cms-admin');
+    clone.querySelectorAll('[data-cms-selected]').forEach(el=>el.removeAttribute('data-cms-selected'));
+    clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+    const html='<!DOCTYPE html>\n'+clone.outerHTML;
+    try{
+      if(window.showSaveFilePicker){
+        const handle=await window.showSaveFilePicker({suggestedName:'index.html',types:[{description:'Page HTML',accept:{'text/html':['.html']}}]});
+        const stream=await handle.createWritable();await stream.write(html);await stream.close();say('index.html prêt à publier');return;
+      }
+    }catch(error){if(error.name==='AbortError')return}
+    const blob=new Blob([html],{type:'text/html;charset=utf-8'}),a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download='index.html';a.click();URL.revokeObjectURL(a.href);say('index.html téléchargé');
+  }
   panel.addEventListener('click',e=>{
     const b=e.target.closest('button');if(!b)return;const act=b.dataset.act,add=b.dataset.add;
     if(act==='save'){localStorage.setItem(KEY,JSON.stringify({version:1,updatedAt:new Date().toISOString(),sections:snapshot()}));history=[];say('Contenu enregistré')}
@@ -110,6 +126,7 @@
     if(act==='duplicate'&&selected){checkpoint();const clone=selected.cloneNode(true);clone.removeAttribute('id');selected.after(clone);select(clone)}
     if(act==='delete'&&selected&&confirm('Supprimer cet élément ?')){checkpoint();const old=selected;select(null);old.remove()}
     if(act==='delete-block'&&selected){const block=selected.closest('.cert,.proj-card,.edu-card,.exp-item,.lang-card,.sk-box,p,li,section');if(block&&confirm('Supprimer tout ce bloc ?')){checkpoint();select(null);block.remove()}}
+    if(act==='export-html')exportHtml();
     if(act==='export'){const blob=new Blob([JSON.stringify({version:1,updatedAt:new Date().toISOString(),sections:snapshot()},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='portfolio-content.json';a.click();URL.revokeObjectURL(a.href)}
     if(act==='reset'&&confirm('Supprimer toutes les modifications locales et restaurer le portfolio original ?')){localStorage.removeItem(KEY);location.reload()}
     if(add){checkpoint();let el;if(add==='section'){el=document.createElement('section');el.id='nouvelle-section';el.innerHTML='<div class="sec-label reveal visible">NOUVELLE SECTION</div><h2 class="sec-title reveal visible"><span class="hi">Titre</span><span class="lo">// SOUS-TITRE</span></h2><p class="about-p reveal visible">Votre contenu ici.</p>';document.querySelector('body > footer').before(el)}else{el=document.createElement(add==='text'?'p':add==='link'?'a':'img');if(add==='text'){el.className='about-p';el.textContent='Nouveau texte'}if(add==='link'){el.className='c-link';el.href='#';el.textContent='Nouveau lien'}if(add==='image'){el.src='https://placehold.co/800x500/080f20/00d4ff?text=Votre+image';el.alt='Nouvelle image';el.style.maxWidth='100%'}const host=selected?.closest('section')||document.querySelector('body > section:last-of-type');host.appendChild(el)}select(el);el.scrollIntoView({behavior:'smooth',block:'center'})}
