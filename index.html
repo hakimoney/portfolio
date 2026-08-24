@@ -82,7 +82,7 @@ nav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;backg
 .hero-name{font-family:'Orbitron',monospace;font-weight:900;font-size:clamp(2rem,4.5vw,4rem);line-height:1;margin-bottom:.8rem;animation:fadeIn 1s .15s ease both;position:relative;}
 .hero-name .l1{display:block;color:var(--white);}
 .hero-name .l2{display:block;background:linear-gradient(90deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 20px rgba(255,107,0,.6));}
-.hero-name .l3{display:block;color:rgba(240,248,255,.60);font-size:.4em;letter-spacing:.4em;margin-top:.5rem;-webkit-text-fill-color:unset;}
+.hero-name .l3{display:block;color:rgba(240,248,255,.60);font-size:.4em;letter-spacing:.32em;margin-top:.5rem;-webkit-text-fill-color:unset;width:min(1050px,calc(100vw - 6rem));max-width:none;line-height:1.55;}
 .hero-seeking{
   display:inline-flex;align-items:center;gap:.6rem;
   background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);
@@ -223,7 +223,7 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
 @media(max-width:900px){
   nav{padding:0 1.5rem;}.nav-links{display:none;}
   .obj-grid{grid-template-columns:1fr!important;}
-  #hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;}.hero-photo-bg{width:100%;top:0;bottom:0;}
+  #hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;}.hero-photo-bg{width:100%;top:0;bottom:0;}.hero-name .l3{width:calc(100vw - 3rem);letter-spacing:.2em;}
   .hero-photo-bg img{object-position:center top;}
   section{padding:3.5rem 1.5rem;}
   #about .grid,.skills-grid,.edu-grid,.proj-grid,.lang-grid{grid-template-columns:1fr;}
@@ -231,6 +231,7 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
   .hero-stats-row{flex-wrap:wrap;}
 }
 </style>
+<link rel="stylesheet" href="portfolio-admin.css">
 </head>
 <body>
 
@@ -273,7 +274,7 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
 
 </p>
     <div class="hero-seeking">⬡ &nbsp;CDI - Data Scientist · AI Engineer · Data Engineer  · THÈSE CIFRE — Disponible Sept. 2026</div>
-    <p class="hero-desc">Solutions IA robustes orientées <strong>données &amp; automatisation</strong>. Court terme : <strong>CDI - Data Scientist · AI Engineer · Data Engineer </strong>. Moyen terme : <strong>Thèse CIFRE</strong> sur détection d'anomalies, cybersécurité, XAI, aide à la decision ou ML appliqué à la sante, l'industrie et la finance.</p>
+    <p class="hero-desc">Solutions IA robustes orientées <strong>données &amp; automatisation</strong>. Court terme : <strong>CDI ou CDD — Data Scientist · AI Engineer · Data Engineer</strong>. Moyen terme : <strong>Thèse CIFRE</strong> sur la détection d'anomalies, la cybersécurité, la XAI, l'aide à la décision ou le ML appliqué à la santé, à l'industrie et à la finance.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-orange">⬡ Me contacter</a>
       <a href="#experience" class="btn btn-outline">// Mon parcours</a>
@@ -784,5 +785,6 @@ document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.le
 const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*70);});},{threshold:.07,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+<script src="portfolio-cms.js"></script>
 </body>
 </html>
