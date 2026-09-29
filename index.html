@@ -2,7 +2,7 @@
 <html lang="fr"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hakim DJOMO GOÏMBA </title>
+<title>index</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Inter:wght@400;500;600&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
 <style>
 :root {
@@ -21,6 +21,18 @@
   --border-o: rgba(255,107,0,0.2);
   --glow-c: rgba(0,212,255,0.05);
   --glow-o: rgba(255,107,0,0.07);
+
+  /* Fond clair + texte foncé pour les sections à mettre en avant (compétences, formation, projets, certifs, langues) */
+  --panel-light: #f8faff;
+  --panel-light2: #edf1fa;
+  --radius: 16px;
+  --ink: #10182c;
+  --ink-muted: #4c5872;
+  --cyan-ink: #00738f;
+  --orange-ink: #c2410c;
+  --violet-ink: #6d28d9;
+  --plasma-ink: #15803d;
+  --border-light: rgba(16,24,44,0.14);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -108,7 +120,7 @@ nav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;backg
 /* ══════════════ SECTIONS ══════════════ */
 section{padding:5rem 3rem;position:relative;z-index:1;}
 section:nth-child(even){background:linear-gradient(180deg,transparent,rgba(0,212,255,.015),transparent);}
-.sec-label{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--orange);letter-spacing:.25em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;}
+.sec-label{font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--orange);letter-spacing:.22em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.8rem;}
 .sec-label::before{content:'>> ';color:var(--cyan);}
 .sec-title{font-family:'Orbitron',monospace;font-weight:900;font-size:clamp(1.6rem,3vw,2.5rem);line-height:1.1;margin-bottom:3rem;}
 .sec-title .hi{color:var(--orange);text-shadow:0 0 20px rgba(255,107,0,.5);}
@@ -116,30 +128,31 @@ section:nth-child(even){background:linear-gradient(180deg,transparent,rgba(0,212
 
 /* ══════════════ ABOUT ══════════════ */
 #about .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:start;}
-.about-p{font-size:.97rem;color:rgba(240,248,255,.85);margin-bottom:1.4rem;line-height:1.9;font-weight:400;}
+.about-p{font-size:1.12rem;color:rgba(240,248,255,.88);margin-bottom:1.4rem;line-height:1.85;font-weight:400;}
 .about-p strong{color:var(--orange);}
 .info-table{border:1px solid var(--border-c);}
-.ir{display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid var(--border-c);}
+.ir{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid var(--border-c);}
 .ir:last-child{border-bottom:none;}
-.ik{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;padding:.85rem 1rem;border-right:1px solid var(--border-c);background:rgba(255,107,0,.04);}
-.iv{font-size:.88rem;color:var(--white);padding:.85rem 1rem;font-weight:500;}
+.ik{font-family:'Share Tech Mono',monospace;font-size:.66rem;color:var(--orange);letter-spacing:.06em;text-transform:uppercase;padding:.9rem 1rem;border-right:1px solid var(--border-c);background:rgba(255,107,0,.04);}
+.iv{font-size:.96rem;color:var(--white);padding:.9rem 1rem;font-weight:500;}
 .iv a{color:var(--cyan);text-decoration:none;}
 .iv.open{color:var(--plasma);}
 
 /* ══════════════ SKILLS ══════════════ */
 .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
-.sk-box{border:1px solid var(--border-c);padding:1.5rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;}
-.sk-box:hover{border-color:var(--orange);transform:translateY(-3px);}
-.sk-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--orange),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.sk-box{background:var(--panel-light);border:1px solid var(--border-light);border-radius:var(--radius);padding:1.6rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,background .3s;}
+.sk-box:hover{border-color:var(--orange-ink);background:var(--panel-light2);transform:translateY(-3px);}
+.sk-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange-ink),var(--cyan-ink));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
 .sk-box:hover::before{transform:scaleX(1);}
-.sk-cat{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.9rem;}
-.tags{display:flex;flex-wrap:wrap;gap:.4rem;}
-.tag{font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:.35rem .9rem;border:1px solid rgba(0,212,255,.22);color:rgba(240,248,255,.82);transition:all .25s;cursor:default;clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);}
-.tag:hover{border-color:var(--orange);color:var(--orange);background:rgba(255,107,0,.08);text-shadow:0 0 8px var(--orange);}
-.tag.c{border-color:rgba(139,92,246,.25);}
-.tag.c:hover{border-color:var(--violet);color:var(--violet);background:rgba(139,92,246,.07);}
-.tag.p{border-color:rgba(57,255,20,.15);}
-.tag.p:hover{border-color:var(--plasma);color:var(--plasma);background:rgba(57,255,20,.06);}
+.sk-cat{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:var(--cyan-ink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;font-weight:600;}
+.sk-sub-label{font-family:'Orbitron',monospace;font-size:.76rem;color:var(--ink-muted);letter-spacing:.06em;margin-bottom:.8rem;font-weight:700;}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+.tag{font-family:'Share Tech Mono',monospace;font-size:.86rem;padding:.5rem 1.1rem;border:1px solid rgba(0,115,143,.32);border-radius:20px;color:var(--ink);background:rgba(255,255,255,.6);transition:all .25s;cursor:default;}
+.tag:hover{border-color:var(--orange-ink);color:var(--orange-ink);background:rgba(194,65,12,.1);text-shadow:none;}
+.tag.c{border-color:rgba(109,40,217,.3);}
+.tag.c:hover{border-color:var(--violet-ink);color:var(--violet-ink);background:rgba(109,40,217,.1);}
+.tag.p{border-color:rgba(21,128,61,.3);}
+.tag.p:hover{border-color:var(--plasma-ink);color:var(--plasma-ink);background:rgba(21,128,61,.1);}
 
 /* ══════════════ EXPERIENCE ══════════════ */
 .exp-timeline{position:relative;padding-left:2rem;}
@@ -147,65 +160,66 @@ section:nth-child(even){background:linear-gradient(180deg,transparent,rgba(0,212
 .exp-item{position:relative;margin-bottom:2.5rem;padding-left:1.5rem;}
 .exp-item::before{content:'';position:absolute;left:-2.4rem;top:.4rem;width:10px;height:10px;background:var(--orange);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);box-shadow:0 0 10px var(--orange);}
 .exp-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.3rem;flex-wrap:wrap;gap:.5rem;}
-.exp-title{font-family:'Orbitron',monospace;font-size:.84rem;color:var(--white);font-weight:700;}
-.exp-date{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--orange);white-space:nowrap;}
-.exp-org{font-family:'Share Tech Mono',monospace;font-size:.67rem;color:var(--cyan);letter-spacing:.08em;margin-bottom:.6rem;}
+.exp-title{font-family:'Orbitron',monospace;font-size:.94rem;color:var(--white);font-weight:700;}
+.exp-date{font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--orange);white-space:nowrap;}
+.exp-org{font-family:'Share Tech Mono',monospace;font-size:.76rem;color:var(--cyan);letter-spacing:.06em;margin-bottom:.6rem;}
 .exp-list{list-style:none;}
-.exp-list li{font-size:.88rem;color:rgba(240,248,255,.82);line-height:1.75;padding-left:.8rem;position:relative;margin-bottom:.3rem;}
+.exp-list li{font-size:1.03rem;color:rgba(240,248,255,.85);line-height:1.75;padding-left:.8rem;position:relative;margin-bottom:.3rem;}
 .exp-list li::before{content:'▸';position:absolute;left:0;color:var(--orange);font-size:.6rem;top:.1rem;}
 
 /* ══════════════ FORMATION ══════════════ */
-.edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-c);}
-.edu-card{background:var(--panel);padding:2rem;position:relative;overflow:hidden;transition:background .3s;}
-.edu-card:hover{background:var(--panel2);}
-.edu-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--orange),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-light);}
+.edu-card{background:var(--panel-light);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;transition:background .3s;}
+.edu-card:hover{background:var(--panel-light2);}
+.edu-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange-ink),var(--cyan-ink));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
 .edu-card:hover::after{transform:scaleX(1);}
-.edu-deg{font-family:'Orbitron',monospace;font-size:.78rem;color:var(--white);margin-bottom:.4rem;line-height:1.4;font-weight:700;}
-.edu-rank{font-size:.74rem;color:var(--orange);font-family:'Share Tech Mono',monospace;margin-bottom:.3rem;}
-.edu-school{font-family:'Share Tech Mono',monospace;font-size:.64rem;color:var(--cyan);letter-spacing:.06em;margin-bottom:.5rem;}
-.edu-date{font-size:.62rem;color:rgba(240,248,255,.65);font-family:'Share Tech Mono',monospace;}
+.edu-deg{font-family:'Orbitron',monospace;font-size:1rem;color:var(--ink);margin-bottom:.55rem;line-height:1.45;font-weight:700;}
+.edu-rank{font-size:.92rem;color:var(--orange-ink);font-family:'Share Tech Mono',monospace;margin-bottom:.4rem;font-weight:600;}
+.edu-school{font-family:'Share Tech Mono',monospace;font-size:.82rem;color:var(--cyan-ink);letter-spacing:.04em;margin-bottom:.6rem;}
+.edu-date{font-size:.78rem;color:var(--ink-muted);font-family:'Share Tech Mono',monospace;}
 
 /* ══════════════ PROJETS ══════════════ */
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-c);}
-.proj-card{background:var(--panel);padding:1.8rem;position:relative;overflow:hidden;transition:background .3s,transform .3s;}
-.proj-card:hover{background:var(--panel2);transform:translateY(-4px);z-index:2;}
-.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--violet));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);}
+.proj-card{background:var(--panel-light);border-radius:var(--radius);padding:1.9rem;position:relative;overflow:hidden;transition:background .3s,transform .3s;}
+.proj-card:hover{background:var(--panel-light2);transform:translateY(-4px);z-index:2;}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange-ink),var(--violet-ink));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
 .proj-card:hover::before{transform:scaleX(1);}
-.proj-n{font-family:'Orbitron',monospace;font-size:2rem;font-weight:900;color:var(--orange);opacity:.1;position:absolute;top:.5rem;right:1rem;line-height:1;}
-.proj-title{font-family:'Orbitron',monospace;font-size:.74rem;color:var(--white);margin-bottom:.4rem;line-height:1.4;font-weight:700;}
-.proj-tech{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--cyan);margin-bottom:.8rem;}
-.proj-desc{font-size:.83rem;color:rgba(240,248,255,.80);line-height:1.75;font-weight:400;}
+.proj-n{font-family:'Orbitron',monospace;font-size:2rem;font-weight:900;color:var(--orange-ink);opacity:.13;position:absolute;top:.5rem;right:1rem;line-height:1;}
+.proj-title{font-family:'Orbitron',monospace;font-size:.95rem;color:var(--ink);margin-bottom:.55rem;line-height:1.45;font-weight:700;}
+.proj-tech{font-family:'Share Tech Mono',monospace;font-size:.78rem;color:var(--cyan-ink);margin-bottom:1rem;}
+.proj-desc{font-size:1rem;color:var(--ink-muted);line-height:1.75;font-weight:400;}
 
 /* ══════════════ CERTS ══════════════ */
-.cert-list{display:flex;flex-direction:column;}
-.cert{display:grid;grid-template-columns:50px 1fr auto;gap:1.5rem;align-items:center;padding:1.5rem 0;border-bottom:1px solid var(--border-c);transition:padding-left .3s;}
-.cert:hover{padding-left:.8rem;}
-.cert-ico{width:42px;height:42px;border:1px solid var(--border-o);clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:rgba(255,107,0,.04);}
-.cert-name{font-family:'Orbitron',monospace;font-size:.74rem;color:var(--white);margin-bottom:.2rem;font-weight:700;}
-.cert-iss{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:rgba(240,248,255,.68);}
-.cert-yr{font-family:'Orbitron',monospace;font-size:.68rem;color:var(--orange);text-shadow:0 0 8px var(--orange);}
+.cert-list{display:flex;flex-direction:column;background:var(--panel-light);border:1px solid var(--border-light);border-radius:var(--radius);overflow:hidden;}
+.cert{display:grid;grid-template-columns:50px 1fr auto;gap:1.5rem;align-items:center;padding:1.7rem 1.6rem;border-bottom:1px solid var(--border-light);transition:padding-left .3s,background .3s;}
+.cert:last-child{border-bottom:none;}
+.cert:hover{padding-left:2.2rem;background:var(--panel-light2);}
+.cert-ico{width:44px;height:44px;border:1px solid rgba(194,65,12,.35);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(194,65,12,.08);}
+.cert-name{font-family:'Orbitron',monospace;font-size:.95rem;color:var(--ink);margin-bottom:.3rem;font-weight:700;}
+.cert-iss{font-family:'Share Tech Mono',monospace;font-size:.8rem;color:var(--ink-muted);}
+.cert-yr{font-family:'Orbitron',monospace;font-size:.86rem;color:var(--orange-ink);text-shadow:none;font-weight:700;}
 
 /* ══════════════ LANGUES ══════════════ */
 .lang-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
-.lang-card{border:1px solid var(--border-c);padding:1.5rem;transition:border-color .3s;}
-.lang-card:hover{border-color:var(--orange);}
-.lang-name{font-family:'Orbitron',monospace;font-size:.85rem;color:var(--white);margin-bottom:.3rem;}
-.lang-level{font-family:'Share Tech Mono',monospace;font-size:.64rem;color:var(--orange);margin-bottom:.8rem;}
-.lang-bar{height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;}
-.lang-fill{height:100%;border-radius:2px;transition:width 1.5s ease;}
-.lang-fill.b2{background:linear-gradient(90deg,var(--orange),var(--orange2));width:72%;}
-.lang-fill.nat{background:linear-gradient(90deg,var(--plasma),var(--cyan));width:100%;}
+.lang-card{background:var(--panel-light);border:1px solid var(--border-light);border-radius:var(--radius);padding:1.7rem;transition:border-color .3s,background .3s;}
+.lang-card:hover{border-color:var(--orange-ink);background:var(--panel-light2);}
+.lang-name{font-family:'Orbitron',monospace;font-size:1.05rem;color:var(--ink);margin-bottom:.4rem;font-weight:700;}
+.lang-level{font-family:'Share Tech Mono',monospace;font-size:.82rem;color:var(--orange-ink);margin-bottom:.9rem;font-weight:600;}
+.lang-bar{height:5px;background:rgba(16,24,44,.1);border-radius:3px;overflow:hidden;}
+.lang-fill{height:100%;border-radius:3px;transition:width 1.5s ease;}
+.lang-fill.b2{background:linear-gradient(90deg,var(--orange-ink),var(--orange2));width:72%;}
+.lang-fill.nat{background:linear-gradient(90deg,var(--plasma-ink),var(--cyan-ink));width:100%;}
 
 /* ══════════════ CONTACT ══════════════ */
 #contact{text-align:center;}
 .contact-inner{max-width:680px;margin:0 auto;}
-.contact-sub{font-size:.97rem;color:rgba(240,248,255,.82);margin:1.5rem 0 2.5rem;line-height:1.9;font-weight:400;}
+.contact-sub{font-size:1.05rem;color:rgba(240,248,255,.85);margin:1.5rem 0 2.5rem;line-height:1.85;font-weight:400;}
 .contact-grid{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
-.c-link{font-family:'Share Tech Mono',monospace;font-size:.7rem;letter-spacing:.07em;border:1px solid var(--border-c);padding:.9rem 1.5rem;color:rgba(240,248,255,.80);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:all .3s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);}
+.c-link{font-family:'Share Tech Mono',monospace;font-size:.8rem;letter-spacing:.05em;border:1px solid var(--border-c);padding:.9rem 1.5rem;color:rgba(240,248,255,.85);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:all .3s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);}
 .c-link:hover{border-color:var(--orange);color:var(--orange);background:rgba(255,107,0,.07);box-shadow:0 0 20px rgba(255,107,0,.15);}
 
 /* ══════════════ FOOTER ══════════════ */
-footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;justify-content:space-between;align-items:center;font-family:'Share Tech Mono',monospace;font-size:.63rem;color:rgba(240,248,255,.55);background:var(--deep);z-index:1;position:relative;}
+footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;justify-content:space-between;align-items:center;font-family:'Share Tech Mono',monospace;font-size:.7rem;color:rgba(240,248,255,.6);background:var(--deep);z-index:1;position:relative;}
 .fa{color:var(--orange);}
 
 /* SCROLLBAR */
@@ -230,27 +244,27 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
   .hero-stats-row{flex-wrap:wrap;}
 }
 </style>
-<link rel="stylesheet" href="portfolio-admin.css">
+
 </head>
 <body class="">
 
-<div id="cur" style="left: 1357px; top: 552px;"></div>
-<div id="cur-ring" style="left: 1357px; top: 552px;"></div>
+<div id="cur" style="left: 1352px; top: 682px;"></div>
+<div id="cur-ring" style="left: 1351.3px; top: 681.897px;"></div>
 
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">HDG</a>
   <ul class="nav-links">
     <li><a href="#about">Profil</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">XP</a></li>
+    <li><a href="#skills">Expertise</a></li>
+    <li><a href="#experience">Expérience</a></li>
     <li><a href="#formation">Formation</a></li>
     <li><a href="#projets">Projets</a></li>
-    <li><a href="#objectifs">Objectifs</a></li>
+    <li><a href="#objectifs">Positionnement</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://github.com/hakimoney" target="_blank">GitHub</a></li>
   </ul>
-  <div class="nav-badge"><div class="dot"></div>DISPONIBLE · PARIS</div>
+  <div class="nav-badge"><div class="dot"></div>OPEN TO CDI · PARIS</div>
 </nav>
 
 <!-- HERO -->
@@ -263,27 +277,25 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
   </div>
 
   <div class="hero-left">
-    <div class="hero-sys">INIT_PROFILE &nbsp;<span>// AI Engineer | Data Scientist |</span></div>
+    <div class="hero-sys">INIT_PROFILE &nbsp;<span>// AI ENGINEER · DATA SCIENTIST · GENERATIVE AI</span></div>
     <h1 class="hero-name">
       <span class="l1">HAKIM DJOMO</span>
       <span class="l2">GOÏMBA</span>
-      <span class="l3">Machine Learning · Deep Learning · Computer Vision · LMMs · XAI · Applied AI Research · Microsoft Certified: Azure AI Apps &amp; Agents | GenAI</span>
+      <span class="l3">GenAI · LLM · RAG · AI Agents · Machine Learning · MLOps · Azure AI</span>
     </h1>
-    
 
-<p></p>
-    <div class="hero-seeking">⬡ &nbsp;CDI - Data Scientist · AI Engineer · Data Engineer  · THÈSE CIFRE — Disponible Sept. 2026</div>
-    <p class="hero-desc">DE LA DONNÉE À L’IMPACT, <strong>Je conçois des solutions d’IA fiables, explicables et déployables.<br></strong>Court terme : <strong>CDI ou CDD — Data Scientist · AI Engineer · Data Engineer</strong>. Moyen terme : <strong>Thèse CIFRE</strong> sur la détection d’anomalies, la cybersécurité, la XAI, l’aide à la décision ou le ML appliqué à la santé, à l’industrie et à la finance.</p>
+    <div class="hero-seeking">⬡ &nbsp;OPEN TO CDI — AI Engineer · Machine Learning Engineer · Data Scientist · GenAI / LLM Engineer</div>
+    <p class="hero-desc"><strong>FROM DATA TO DEPLOYMENT.</strong><br>Je conçois et industrialise des solutions d’intelligence artificielle de bout en bout : modèles de Machine Learning, applications GenAI, systèmes RAG / Graph-RAG, agents IA, pipelines Data/ML et APIs.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-orange">⬡ Me contacter</a>
-      <a href="#experience" class="btn btn-outline">// Mon parcours</a>
+      <a href="#projets" class="btn btn-outline">// Mes projets</a>
       <a href="https://github.com/hakimoney" target="_blank" class="btn btn-outline" style="border-color:rgba(255,107,0,0.5);color:var(--orange);">⌥ GitHub</a>
     </div>
     <div class="hero-stats-row">
-      <div class="hstat"><div class="hstat-val">M2</div><div class="hstat-key">AIVANCITY #1 IA</div></div>
-      <div class="hstat"><div class="hstat-val">3+</div><div class="hstat-key">Expériences</div></div>
-      <div class="hstat"><div class="hstat-val">8+</div><div class="hstat-key">Projets IA</div></div>
-      <div class="hstat"><div class="hstat-val">GCP</div><div class="hstat-key">Azure · AWS</div></div>
+      <div class="hstat"><div class="hstat-val">M2</div><div class="hstat-key">IA &amp; DATA SCIENCE</div></div>
+      <div class="hstat"><div class="hstat-val">E2E</div><div class="hstat-key">DATA → DEPLOYMENT</div></div>
+      <div class="hstat"><div class="hstat-val">9+</div><div class="hstat-key">PROJETS IA</div></div>
+      <div class="hstat"><div class="hstat-val">AZURE</div><div class="hstat-key">MICROSOFT CERTIFIED</div></div>
       <div class="hstat"><a href="https://github.com/hakimoney" target="_blank" style="text-decoration:none;"><div class="hstat-val" style="color:var(--cyan);">⌥</div><div class="hstat-key">GitHub</div></a></div>
     </div>
   </div>
@@ -292,214 +304,82 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
 <!-- ABOUT -->
 <section id="about">
   <div class="sec-label reveal visible">IDENTITÉ</div>
-  <h2 class="sec-title reveal visible"><span class="hi">Profil</span> Chercheur<span class="lo">// QUI SUIS-JE</span></h2>
+  <h2 class="sec-title reveal visible"><span class="hi">AI Engineer</span> &amp; Data Scientist<span class="lo">// FROM DATA TO DEPLOYMENT</span></h2>
   <div class="grid">
    <div class="reveal visible">
-      <p class="about-p">AI Engineer spécialisé en LLMs, RAG, NLP et systèmes IA modernes, actuellement en Master 2 Intelligence Artificielle &amp; Data Science à aivancity. avec des projets appliqués en computer vision, graphes de connaissances temporels, détection d’anomalies et IA générative. Je développe des solutions IA appliquées pour des problématiques concrètes en industrie, énergie, santé et finance. Je recherche  des  opportunités en CDD ou CDI en tant qu’AI Engineer, Applied AI Engineer ou Data Scientist, avec un intérêt particulier pour la recherche appliquée et les thèses CIFRE.</p>
-      <p class="about-p">Mes expériences chez <strong>Energiency</strong> (efficacité énergétique industrielle) et <strong>PicturifyAI</strong> (Computer Vision &amp; IA générative), combinées à un solide socle en génie logiciel, m'ont appris à naviguer entre rigueur scientifique et contraintes terrain : données bruitées, latence, déploiement, interprétabilité. Je m'intéresse particulièrement aux <strong>architectures modernes ML/DL</strong>, aux <strong>systèmes distribués de données</strong> et aux applications IA à <strong>fort impact opérationnel</strong> dans des secteurs critiques — industrie, finance, cybersécurité, santé.</p>
-      <p class="about-p" style="border-left-color:var(--orange);"><strong>Court terme —</strong> intégrer une <strong>entreprise innovante en CDI ou CDD</strong> pour concevoir et déployer des solutions IA robustes orientées données, automatisation et prise de décision, dans un environnement où rigueur scientifique et impact opérationnel se nourrissent mutuellement.</p>
-      <p class="about-p" style="border-left-color:var(--cyan);"><strong style="color:var(--cyan)">Moyen terme —</strong> poursuivre une <strong>Thèse  financée</strong> sur des problématiques à fort enjeu en France : <strong> Aide à la décision</strong>, <strong>détection d'anomalies</strong>, <strong>fraude &amp; cybersécurité</strong>, <strong>IA explicable (XAI)</strong>, <strong>systèmes temps réel</strong>, <strong>IA de confiance</strong> ou <strong>ML appliqué à la santé,  à l'industrie et à la finance</strong>.</p>
+      <p class="about-p">AI Engineer &amp; Data Scientist, je conçois et industrialise des <strong>solutions d’intelligence artificielle de bout en bout</strong>, de la donnée au déploiement.</p>
+      <p class="about-p">Je développe des modèles de <strong>Machine Learning</strong>, des applications <strong>GenAI basées sur les LLM</strong>, des systèmes <strong>RAG / Graph-RAG</strong>, des <strong>agents IA</strong> et des architectures multi-agents, ainsi que les pipelines Data/ML et APIs nécessaires à leur mise en production.</p>
+      <p class="about-p">Mon expertise couvre également le <strong>NLP</strong>, la <strong>Computer Vision</strong>, l’<strong>IA explicable (XAI)</strong>, les graphes de connaissances, l’analyse et la visualisation de données. J’accorde une attention particulière à la performance, à l’explicabilité, à la fiabilité, à la scalabilité et à l’industrialisation des solutions IA.</p>
+      <p class="about-p" style="border-left-color:var(--orange);"><strong>Positionnement —</strong> AI Engineering · Machine Learning · Data Science · GenAI / LLM Engineering · IA appliquée.</p>
     </div>
     <div class="info-table reveal visible">
       <div class="ir"><span class="ik">Nom</span><span class="iv">Hakim DJOMO GOÏMBA</span></div>
       <div class="ir"><span class="ik">Localisation</span><span class="iv">Paris, France</span></div>
-      <div class="ir"><span class="ik">Diplôme</span><span class="iv">Diplôme d’Études Supérieures en Intelligence Artificielle et Data Science (RNCP Niv.7) - Grade de Master</span></div>
-      <div class="ir"><span class="ik">École</span><span class="iv">AIVANCITY #1 IA France</span></div>
-      <div class="ir"><span class="ik">Email</span><span class="iv"><a href="mailto:hakim.djomo@aivancity.education">
-  <span class="__cf_email__">hakim.djomo@aivancity.education</span></a></span></div>
+      <div class="ir"><span class="ik">Diplôme</span><span class="iv">Master's Degree  -  Diplôme d’Études Supérieures en Intelligence Artificielle et Science des Données.</span></div>
+      <div class="ir"><span class="ik">École</span><span class="iv">aivancity · Paris-Cachan</span></div>
+      <div class="ir"><span class="ik">Certification</span><span class="iv">Microsoft Certified: Azure AI Apps &amp; Agents</span></div>
+      <div class="ir"><span class="ik">Email</span><span class="iv"><a href="mailto:hakim.djomo@aivancity.education"><span>hakim.djomo@aivancity.education</span></a></span></div>
       <div class="ir"><span class="ik">LinkedIn</span><span class="iv"><a href="https://www.linkedin.com/in/hakim-djomo-go%C3%AFmba-914286259/" target="_blank">hakim-djomo-goïmba</a></span></div>
       <div class="ir"><span class="ik">GitHub</span><span class="iv"><a href="https://github.com/hakimoney" target="_blank">github.com/hakimoney</a></span></div>
-      <div class="ir"><span class="ik">Tél</span><span class="iv">+33610 84 45 77</span></div>
-      <div class="ir"><span class="ik">Statut</span><span class="iv open">● OPEN TO CDI / THÈSE</span></div>
+      <div class="ir"><span class="ik">Portfolio</span><span class="iv"><a href="https://hakimdjomo.com" target="_blank">hakimdjomo.com</a></span></div>
+      <div class="ir"><span class="ik">Statut</span><span class="iv open">● OPEN TO CDI</span></div>
     </div>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="sec-label reveal visible">STACK TECHNIQUE</div>
-  <h2 class="sec-title reveal visible"><span class="hi">Compétences</span><span class="lo">// EXPERTISE MATRIX</span></h2>
-
-  <style>
-    /* Level bar helper */
-    .sk-level { display:flex; gap:4px; margin-bottom:.7rem; align-items:center; }
-    .sk-level-bar { width:14px; height:4px; border-radius:2px; }
-    .sk-level-label { font-family:'Share Tech Mono',monospace; font-size:.58rem; color:var(--muted); margin-left:4px; }
-    /* Staggered reveal animation for sk-box */
-    .skills-grid .sk-box { transition-delay: 0ms; }
-    .skills-grid .sk-box:nth-child(1) { transition-delay: 0ms; }
-    .skills-grid .sk-box:nth-child(2) { transition-delay: 70ms; }
-    .skills-grid .sk-box:nth-child(3) { transition-delay: 140ms; }
-    .skills-grid .sk-box:nth-child(4) { transition-delay: 210ms; }
-    .skills-grid .sk-box:nth-child(5) { transition-delay: 280ms; }
-    .skills-grid .sk-box:nth-child(6) { transition-delay: 350ms; }
-    .skills-grid .sk-box:nth-child(7) { transition-delay: 420ms; }
-    .skills-grid .sk-box:nth-child(8) { transition-delay: 490ms; }
-    /* Sub-label inside sk-box */
-    .sk-sub-label {
-      font-family:'Share Tech Mono',monospace; font-size:.55rem;
-      color:var(--muted); letter-spacing:.12em; text-transform:uppercase;
-      margin-top:.75rem; margin-bottom:.4rem;
-      display:flex; align-items:center; gap:.4rem;
-    }
-    .sk-sub-label::before { content:'▸'; font-size:.48rem; color:var(--cyan); }
-  </style>
+  <div class="sec-label reveal visible">EXPERTISE</div>
+  <h2 class="sec-title reveal visible"><span class="hi">Stack</span> IA &amp; Data<span class="lo">// BUILD · EXPLAIN · DEPLOY</span></h2>
 
   <div class="skills-grid">
-
-    <!-- 1. Langages de programmation -->
     <div class="sk-box reveal visible">
-      <div class="sk-cat">Langages de Programmation</div>
-      <div class="sk-level">
-        <span class="sk-level-bar" style="background:var(--plasma);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--plasma);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--plasma);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--plasma);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--plasma);opacity:1"></span>
-        <span class="sk-level-label">Expert</span>
-      </div>
+      <div class="sk-cat">AI Engineering &amp; Deployment</div>
+      <div class="sk-sub-label">Production</div>
       <div class="tags">
-        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">R</span><span class="tag">C</span><span class="tag">JavaScript</span><span class="tag">Shell</span><span class="tag">HTML/CSS</span>
+        <span class="tag c">FastAPI</span><span class="tag c">Docker</span><span class="tag c">MLflow</span><span class="tag c">REST APIs</span><span class="tag c">Git &amp; GitHub</span><span class="tag c">Model Deployment</span><span class="tag p">Azure AI</span><span class="tag p">Cloud</span>
       </div>
     </div>
 
-    <!-- 2. IA & Machine Learning -->
     <div class="sk-box reveal visible">
-      <div class="sk-cat">IA &amp; Machine Learning</div>
-      <div class="sk-level">
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-label">Expert</span>
-      </div>
-      <div class="sk-sub-label">Concepts</div>
+      <div class="sk-cat">Data Science &amp; Machine Learning</div>
+      <div class="sk-sub-label">Modélisation &amp; Explicabilité</div>
       <div class="tags">
-        <span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">Reinforcement Learning</span><span class="tag">Supervised &amp; Unsupervised</span><span class="tag">Anomaly Detection</span><span class="tag">Fraud Detection</span><span class="tag">XAI</span><span class="tag">Time Series</span>
-      </div>
-      <div class="sk-sub-label">Frameworks</div>
-      <div class="tags">
-        <span class="tag c">PyTorch</span><span class="tag c">TensorFlow</span><span class="tag c">Scikit-learn</span><span class="tag c">XGBoost</span><span class="tag c">LightGBM</span><span class="tag c">Transformers</span><span class="tag c">Keras</span>
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">SHAP</span><span class="tag">Time Series</span>
       </div>
     </div>
 
-    <!-- 3. IA Générative & LLMs -->
     <div class="sk-box reveal visible">
-      <div class="sk-cat">IA Générative &amp; LLMs</div>
-      <div class="sk-level">
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:.2"></span>
-        <span class="sk-level-label">Avancé</span>
-      </div>
+      <div class="sk-cat">Generative AI · LLM · RAG</div>
+      <div class="sk-sub-label">Agentic Systems</div>
       <div class="tags">
-        <span class="tag">Generative AI</span><span class="tag">LLMs</span><span class="tag">NLP</span><span class="tag">Agentic AI</span><span class="tag">MCP</span><span class="tag">RAG</span><span class="tag">Graph-RAG</span><span class="tag">Graphe de connaissances temporels</span><span class="tag">Transformers</span><span class="tag">Fine-tuning</span><span class="tag">Agentic AI</span>
+        <span class="tag">GenAI</span><span class="tag">LLM</span><span class="tag">RAG</span><span class="tag">Graph-RAG</span><span class="tag">AI Agents</span><span class="tag">Agentic AI</span><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">CrewAI</span>
       </div>
     </div>
 
-    <!-- 4. Deep Learning & Computer Vision -->
     <div class="sk-box reveal visible">
-      <div class="sk-cat">Deep Learning &amp; Vision</div>
-      <div class="sk-level">
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--orange);opacity:1"></span>
-        <span class="sk-level-label">Expert</span>
-      </div>
+      <div class="sk-cat">Deep Learning · NLP · Vision</div>
+      <div class="sk-sub-label">Models &amp; Frameworks</div>
       <div class="tags">
-        <span class="tag">CNN</span><span class="tag">RNN</span><span class="tag">LSTM</span><span class="tag">ViT</span><span class="tag">Mask R-CNN</span><span class="tag">SAM2</span><span class="tag">YOLO8</span><span class="tag">Détection d'objets</span><span class="tag">Segmentation</span><span class="tag">OpenCV</span>
+        <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Transformers</span><span class="tag">NLP</span><span class="tag">Computer Vision</span><span class="tag">OpenCV</span><span class="tag">CNN</span><span class="tag">YOLO</span>
       </div>
     </div>
 
-    <!-- 5. Data Science & Analytics -->
     <div class="sk-box reveal visible">
-      <div class="sk-cat">Data Science &amp; Analytics</div>
-      <div class="sk-level">
-        <span class="sk-level-bar" style="background:var(--cyan);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--cyan);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--cyan);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--cyan);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--cyan);opacity:.2"></span>
-        <span class="sk-level-label">Avancé</span>
-      </div>
-      <div class="sk-sub-label">Méthodes</div>
+      <div class="sk-cat">Data Analysis &amp; Visualization</div>
+      <div class="sk-sub-label">Insights &amp; Reporting</div>
       <div class="tags">
-        <span class="tag">Data Cleaning</span><span class="tag">Feature Engineering</span><span class="tag">Statistical Analysis</span><span class="tag">Model Evaluation</span><span class="tag">EDA</span><span class="tag">Data Visualization</span>
-      </div>
-      <div class="sk-sub-label">Outils</div>
-      <div class="tags">
-        <span class="tag p">Pandas</span><span class="tag p">NumPy</span><span class="tag p">Matplotlib</span><span class="tag p">Plotly</span><span class="tag p">Seaborn</span><span class="tag p">Jupyter</span>
+        <span class="tag">EDA</span><span class="tag">Feature Engineering</span><span class="tag">Statistical Analysis</span><span class="tag">Model Evaluation</span><span class="tag p">Power BI</span><span class="tag p">Matplotlib</span><span class="tag p">Plotly</span><span class="tag p">Jupyter</span>
       </div>
     </div>
 
-    <!-- 6. Data Engineering & Big Data -->
     <div class="sk-box reveal visible">
-      <div class="sk-cat">Data Engineering &amp; Big Data</div>
-      <div class="sk-level">
-        <span class="sk-level-bar" style="background:var(--cyan);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--cyan);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--cyan);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--cyan);opacity:.2"></span>
-        <span class="sk-level-bar" style="background:var(--cyan);opacity:.2"></span>
-        <span class="sk-level-label">Intermédiaire</span>
-      </div>
-      <div class="sk-sub-label">Concepts</div>
+      <div class="sk-cat">Data &amp; Knowledge Systems</div>
+      <div class="sk-sub-label">Databases &amp; Knowledge Graphs</div>
       <div class="tags">
-        <span class="tag">ETL / ELT Pipelines</span><span class="tag">Distributed Processing</span><span class="tag">Data Warehousing</span><span class="tag">Workflow Orchestration</span>
-      </div>
-      <div class="sk-sub-label">Technologies</div>
-      <div class="tags">
-        <span class="tag c">Apache Spark</span><span class="tag c">Apache Airflow</span><span class="tag c">Hadoop</span>
+        <span class="tag p">PostgreSQL</span><span class="tag p">MySQL</span><span class="tag p">Neo4j</span><span class="tag">Knowledge Graphs</span><span class="tag">Temporal Knowledge Graphs</span><span class="tag">Data Pipelines</span><span class="tag">JavaScript</span>
       </div>
     </div>
-
-    <!-- 7. MLOps, Déploiement & Cloud -->
-    <div class="sk-box reveal visible">
-      <div class="sk-cat">MLOps, Déploiement &amp; Cloud</div>
-      <div class="sk-level">
-        <span class="sk-level-bar" style="background:var(--violet);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--violet);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--violet);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--violet);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--violet);opacity:.2"></span>
-        <span class="sk-level-label">Avancé</span>
-      </div>
-      <div class="sk-sub-label">Pratiques</div>
-      <div class="tags">
-        <span class="tag c">Model Deployment</span><span class="tag c">API Development</span><span class="tag c">CI/CD ML</span><span class="tag c">Containerization</span><span class="tag c">Experiment Tracking</span>
-      </div>
-      <div class="sk-sub-label">Outils &amp; Plateformes</div>
-      <div class="tags">
-        <span class="tag c">Docker</span><span class="tag c">FastAPI</span><span class="tag c">MLflow</span><span class="tag c">Git &amp; GitHub</span><span class="tag c">Kubernetes</span><span class="tag p">AWS</span><span class="tag p">Azure</span><span class="tag p">GCP</span>
-      </div>
-    </div>
-
-    <!-- 8. Bases de données & Applied AI -->
-    <div class="sk-box reveal visible">
-      <div class="sk-cat">Bases de Données &amp; Applied AI</div>
-      <div class="sk-level">
-        <span class="sk-level-bar" style="background:var(--plasma);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--plasma);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--plasma);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--plasma);opacity:1"></span>
-        <span class="sk-level-bar" style="background:var(--plasma);opacity:.2"></span>
-        <span class="sk-level-label">Avancé</span>
-      </div>
-      <div class="sk-sub-label">Databases</div>
-      <div class="tags">
-        <span class="tag p">PostgreSQL</span><span class="tag p">MySQL</span><span class="tag p">MongoDB</span><span class="tag p">Redis</span><span class="tag p">Cloud</span>
-      </div>
-      <div class="sk-sub-label">Research Interests</div>
-      <div class="tags">
-        <span class="tag">Trustworthy AI</span><span class="tag">AI for Finance</span><span class="tag">AI for Cybersecurity</span><span class="tag">Predictive Systems</span><span class="tag">Industrial AI</span>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -509,6 +389,18 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
   <h2 class="sec-title reveal visible"><span class="hi">Parcours</span> Pro<span class="lo">// CAREER LOG</span></h2>
   <div class="exp-timeline">
     <div class="exp-item reveal visible">
+      <div class="exp-head">
+        <span class="exp-title">Consultant Data &amp; AI Engineer</span>
+        <span class="exp-date">Janv. 2026 – Juin 2026 · À distance</span>
+      </div>
+      <div class="exp-org">◈ Ogooué IA · CDD temps partiel</div>
+      <ul class="exp-list">
+        <li>Conception de solutions Data &amp; IA de bout en bout, de l’analyse du besoin métier à l’intégration technique.</li>
+        <li>Préparation et analyse de données avec Python &amp; SQL, développement et évaluation de modèles de Machine Learning.</li>
+        <li>Conception de solutions GenAI basées sur les LLM, RAG et agents IA pour automatiser la recherche, l’analyse et la génération d’informations.</li>
+        <li>Développement d’API et services IA, avec participation à l’industrialisation : tests, versioning, conteneurisation, déploiement et suivi des performances.</li>
+      </ul>
+    </div><div class="exp-item reveal visible">
       <div class="exp-head">
         <span class="exp-title">Data Scientist Junior — Stage</span>
         <span class="exp-date">09/2025 – 11/2025</span>
@@ -554,33 +446,22 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
   <h2 class="sec-title reveal visible"><span class="hi">Éducation</span><span class="lo">// ACADEMIC STACK</span></h2>
   <div class="edu-grid">
     <div class="edu-card reveal visible">
-      <div class="edu-deg">Diplôme d'Études Supérieures en Intelligence Artificielle et Science des Données</div>
-      <div class="edu-rank">RNCP Niveau 7 — Grade de Master</div>
-      <div class="edu-school">AIVANCITY · École #1 IA &amp; Data en France · Paris-Cachan</div>
-      <div class="edu-date">09/2025 – 09/2026 (en cours)</div>
+      <div class="edu-deg">Master's Degree - Intelligence Artificielle &amp; Science de Données</div>
+      <div class="edu-rank">Diplôme d’Études supérieures en Intelligence Artificielle et Science des Données.</div>
+      <div class="edu-school">aivancity · Paris-Cachan, France</div>
+      <div class="edu-date">Diplômé · 2026</div>
     </div>
     <div class="edu-card reveal visible">
       <div class="edu-deg">Licence 3 — Développement de Solutions IA &amp; Data Science</div>
-      <div class="edu-rank">Titre professionnel reconnu</div>
-      <div class="edu-school">AIVANCITY · Paris, France</div>
+      <div class="edu-rank">Intelligence Artificielle · Data Science · Développement</div>
+      <div class="edu-school">aivancity · Paris, France</div>
       <div class="edu-date">2023 – 2024</div>
     </div>
     <div class="edu-card reveal visible">
       <div class="edu-deg">Licence 3 Pro — Génie Informatique, option Génie Logiciel</div>
-      <div class="edu-rank">Première école publique d'ingénieurs télécom d'Afrique centrale</div>
-      <div class="edu-school">INPTIC · Institut National de la Poste et TIC · Libreville, Gabon</div>
-      <div class="edu-date">10/2019 – 09/2021</div>
-    </div><div class="edu-card reveal visible">
-      <div class="edu-deg">Baccalauréat  Scientifique (Mathématiques, Chimie et Biologie )</div>
-      <div class="edu-rank">Lycée d'État</div>
-      <div class="edu-school">  Charles Mefane, Lambaréné, Gabon</div>
-      <div class="edu-date">10/2016– 09/2027</div>
-    </div>
-    <div class="edu-card reveal visible" style="background:rgba(255,107,0,.03);border:1px solid rgba(255,107,0,.2);">
-      <div class="edu-deg" style="color:var(--orange);">Disponible pour une Thèse CIFRE</div>
-      <div class="edu-rank">Deep Learning · Vision par Ordinateur · LLMs</div>
-      <div class="edu-school">Représentation latente · Généralisation de domaine · Architectures avancées</div>
-      <div class="edu-date">À partir de Mars 2026</div>
+      <div class="edu-rank">Software Engineering · Computer Engineering · Bases de données</div>
+      <div class="edu-school">INPTIC · Libreville, Gabon</div>
+      <div class="edu-date">2019 – 2021</div>
     </div>
   </div>
 </section>
@@ -658,7 +539,7 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
 <!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="sec-label reveal visible">CERTIFICATIONS</div>
-  <h2 class="sec-title reveal visible"><span class="hi">Accréditations</span><span class="lo">// VALIDATED SKILLS</span></h2>
+  <h2 class="sec-title reveal visible"><span class="hi">Accréditations / Certifications</span><span class="lo">// VALIDATED SKILLS</span></h2>
   <div class="cert-list">
     <div class="cert reveal visible">
       <div class="cert-ico">🎓</div>
@@ -667,7 +548,7 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
     </div>
     <div class="cert reveal visible">
       <div class="cert-ico">☁️</div>
-      <div><div class="cert-name">Microsoft Certified: Azure AI Agent and Application Associate Developer</div><div class="cert-iss">Microsoft · validé</div></div>
+      <div><div class="cert-name">Microsoft Certified: Azure AI Apps &amp; Agents</div><div class="cert-iss">Microsoft · validé</div></div>
       <div class="cert-yr">2026</div>
     </div>
   </div>
@@ -693,73 +574,35 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
 
 <!-- OBJECTIFS -->
 <section id="objectifs">
-  <div class="sec-label reveal visible">AMBITIONS</div>
-  <h2 class="sec-title reveal visible"><span class="hi">Objectifs</span><span class="lo">// CAREER ROADMAP</span></h2>
+  <div class="sec-label reveal visible">POSITIONNEMENT</div>
+  <h2 class="sec-title reveal visible"><span class="hi">Ce que je construis</span><span class="lo">// FROM DATA TO DEPLOYMENT</span></h2>
 
-  <!-- Court terme -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem;" class="obj-grid">
-    <div style="border:1px solid var(--border-o);padding:2rem;position:relative;overflow:hidden;" class="reveal visible">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-c);margin-bottom:2.5rem;" class="obj-grid">
+    <div style="background:var(--panel);padding:1.7rem;position:relative;overflow:hidden;" class="reveal obj-theme visible">
       <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--orange2));"></div>
-      <div style="font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--orange);letter-spacing:.2em;margin-bottom:.8rem;">▸ COURT TERME</div>
-      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:900;color:var(--white);margin-bottom:1rem;">CDI · R&amp;D IA</div>
-      <p style="font-size:.9rem;color:rgba(240,248,255,.82);line-height:1.8;margin:0;">Intégrer une entreprise innovante pour <strong>concevoir et déployer des solutions IA robustes</strong> orientées données, automatisation et aide à la décision. Recherche d'un environnement où rigueur scientifique et impact opérationnel se nourrissent mutuellement.</p>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--orange);letter-spacing:.18em;margin-bottom:.8rem;">01 // AI ENGINEERING</div>
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:900;color:var(--white);margin-bottom:.8rem;">Build → API → Deploy</div>
+      <p style="font-size:.93rem;color:rgba(240,248,255,.8);line-height:1.7;margin:0;">Conception de services IA intégrables : pipelines, APIs, conteneurisation, suivi d’expériences et mise en production.</p>
     </div>
-    <div style="border:1px solid var(--border-c);padding:2rem;position:relative;overflow:hidden;" class="reveal visible">
+    <div style="background:var(--panel);padding:1.7rem;position:relative;overflow:hidden;" class="reveal obj-theme visible">
       <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet));"></div>
-      <div style="font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--cyan);letter-spacing:.2em;margin-bottom:.8rem;">▸ MOYEN TERME</div>
-      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:900;color:var(--white);margin-bottom:1rem;">Thèse CIFRE · Recherche Appliquée</div>
-      <p style="font-size:.9rem;color:rgba(240,248,255,.82);line-height:1.8;margin:0;">Poursuivre une <strong>thèse financée CIFRE</strong> sur des problématiques à fort enjeu en France, en lien étroit avec l'industrie. Ambition : produire des travaux à impact réel, entre publication scientifique et déploiement terrain.</p>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--cyan);letter-spacing:.18em;margin-bottom:.8rem;">02 // DATA SCIENCE</div>
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:900;color:var(--white);margin-bottom:.8rem;">Analyze → Predict → Explain</div>
+      <p style="font-size:.93rem;color:rgba(240,248,255,.8);line-height:1.7;margin:0;">Analyse de données, feature engineering, modèles prédictifs, évaluation, visualisation et explicabilité.</p>
+    </div>
+    <div style="background:var(--panel);padding:1.7rem;position:relative;overflow:hidden;" class="reveal obj-theme visible">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--violet),var(--plasma));"></div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--violet);letter-spacing:.18em;margin-bottom:.8rem;">03 // GENERATIVE AI</div>
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:900;color:var(--white);margin-bottom:.8rem;">LLM → RAG → Agents</div>
+      <p style="font-size:.93rem;color:rgba(240,248,255,.8);line-height:1.7;margin:0;">Applications LLM, RAG / Graph-RAG, agents IA et orchestration multi-agents orientés cas d’usage.</p>
     </div>
   </div>
 
-  <!-- Thèmes CIFRE -->
-  <div class="sec-label reveal visible" style="margin-bottom:1.2rem;">THÉMATIQUES CIFRE CIBLÉES</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-c);margin-bottom:2.5rem;">
-    <div style="background:var(--panel);padding:1.4rem;transition:background .3s;" class="reveal obj-theme visible">
-      <div style="font-size:1.4rem;margin-bottom:.6rem;">🔍</div>
-      <div style="font-family:'Orbitron',monospace;font-size:.72rem;font-weight:700;color:var(--white);margin-bottom:.4rem;">Détection d'anomalies</div>
-      <p style="font-size:.8rem;color:rgba(240,248,255,.65);line-height:1.6;margin:0;">Systèmes de détection non supervisée, apprentissage one-class, modèles sur flux de données industrielles.</p>
-    </div>
-    <div style="background:var(--panel);padding:1.4rem;transition:background .3s;" class="reveal obj-theme visible">
-      <div style="font-size:1.4rem;margin-bottom:.6rem;">🛡️</div>
-      <div style="font-family:'Orbitron',monospace;font-size:.72rem;font-weight:700;color:var(--white);margin-bottom:.4rem;">Fraude &amp; Cybersécurité</div>
-      <p style="font-size:.8rem;color:rgba(240,248,255,.65);line-height:1.6;margin:0;">Détection de comportements malveillants, modèles adversariaux, sécurité des systèmes IA.</p>
-    </div>
-    <div style="background:var(--panel);padding:1.4rem;transition:background .3s;" class="reveal obj-theme visible">
-      <div style="font-size:1.4rem;margin-bottom:.6rem;">💡</div>
-      <div style="font-family:'Orbitron',monospace;font-size:.72rem;font-weight:700;color:var(--white);margin-bottom:.4rem;">IA Explicable (XAI)</div>
-      <p style="font-size:.8rem;color:rgba(240,248,255,.65);line-height:1.6;margin:0;">Interprétabilité des modèles, SHAP, LIME, méthodes d'attribution pour systèmes critiques.</p>
-    </div>
-    <div style="background:var(--panel);padding:1.4rem;transition:background .3s;" class="reveal obj-theme visible">
-      <div style="font-size:1.4rem;margin-bottom:.6rem;">⚡</div>
-      <div style="font-family:'Orbitron',monospace;font-size:.72rem;font-weight:700;color:var(--white);margin-bottom:.4rem;">Systèmes Temps Réel</div>
-      <p style="font-size:.8rem;color:rgba(240,248,255,.65);line-height:1.6;margin:0;">IA sur flux de données (streaming), edge computing, inférence basse latence pour systèmes embarqués.</p>
-    </div>
-    <div style="background:var(--panel);padding:1.4rem;transition:background .3s;" class="reveal obj-theme visible">
-      <div style="font-size:1.4rem;margin-bottom:.6rem;">🤝</div>
-      <div style="font-family:'Orbitron',monospace;font-size:.72rem;font-weight:700;color:var(--white);margin-bottom:.4rem;">IA de Confiance</div>
-      <p style="font-size:.8rem;color:rgba(240,248,255,.65);line-height:1.6;margin:0;">Robustesse, équité, privacy-preserving ML, conformité réglementaire (AI Act EU).</p>
-    </div>
-    <div style="background:var(--panel);padding:1.4rem;transition:background .3s;" class="reveal obj-theme visible">
-      <div style="font-size:1.4rem;margin-bottom:.6rem;">🏭</div>
-      <div style="font-family:'Orbitron',monospace;font-size:.72rem;font-weight:700;color:var(--white);margin-bottom:.4rem;">ML Industriel &amp; Financier</div>
-      <p style="font-size:.8rem;color:rgba(240,248,255,.65);line-height:1.6;margin:0;">Maintenance prédictive, scoring de risque, modèles pour secteurs réglementés (finance, énergie, santé).</p>
-    </div>
-  </div>
-
-  <!-- Intérêts transverses -->
-  <div class="reveal visible" style="border:1px solid var(--border-c);padding:1.8rem;background:var(--panel);position:relative;overflow:hidden;">
-    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--orange),transparent);"></div>
-    <div style="font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--cyan);letter-spacing:.2em;margin-bottom:1rem;">▸ INTÉRÊTS TRANSVERSES</div>
-    <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
-      <span style="font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:.35rem 1rem;border:1px solid rgba(0,212,255,.25);color:rgba(240,248,255,.85);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);">Architectures ML/DL modernes</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:.35rem 1rem;border:1px solid rgba(0,212,255,.25);color:rgba(240,248,255,.85);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);">Systèmes distribués de données</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:.35rem 1rem;border:1px solid rgba(255,107,0,.25);color:rgba(240,248,255,.85);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);">Applications IA à fort impact opérationnel</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:.35rem 1rem;border:1px solid rgba(0,212,255,.25);color:rgba(240,248,255,.85);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);">Représentation latente</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:.35rem 1rem;border:1px solid rgba(255,107,0,.25);color:rgba(240,248,255,.85);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);">Généralisation de domaine</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:.35rem 1rem;border:1px solid rgba(57,255,20,.2);color:rgba(240,248,255,.85);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);">Apprentissage multimodal</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:.35rem 1rem;border:1px solid rgba(57,255,20,.2);color:rgba(240,248,255,.85);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);">Edge AI &amp; Inférence embarquée</span>
-    </div>
+  <div class="reveal visible" style="border:1px solid var(--border-o);padding:1.8rem;background:linear-gradient(90deg,rgba(255,107,0,.05),rgba(0,212,255,.04));position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--orange),var(--cyan),transparent);"></div>
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--plasma);letter-spacing:.18em;margin-bottom:.8rem;">● OPEN TO CDI</div>
+    <div style="font-family:'Orbitron',monospace;font-size:clamp(.85rem,1.6vw,1.1rem);font-weight:900;color:var(--white);margin-bottom:.8rem;">AI Engineer · Machine Learning Engineer · Data Scientist · GenAI / LLM Engineer</div>
+    <p style="font-size:.96rem;color:rgba(240,248,255,.8);line-height:1.75;margin:0;">Je recherche des rôles où je peux transformer la donnée en systèmes IA utiles, explicables et déployables — avec une vraie continuité entre modélisation, engineering et production.</p>
   </div>
 </section>
 
@@ -767,21 +610,21 @@ footer{padding:1.5rem 3rem;border-top:1px solid var(--border-c);display:flex;jus
 <section id="contact">
   <div class="contact-inner">
     <div class="sec-label reveal visible" style="justify-content:center;">CANAL OUVERT</div>
-    <h2 class="sec-title reveal visible" style="text-align:center;"><span class="hi">Travaillons</span> ensemble<span class="lo">// </span></h2>
-    <p class="contact-sub reveal visible">Court terme : <strong style="color:var(--orange)">CDI — Data Scientist · AI Engineer · Data Engineer · Applied AI Researcher</strong> dans une entreprise innovante.<br>Moyen terme : <strong style="color:var(--cyan)">Thèse CIFRE</strong> sur détection d'anomalies, cybersécurité, XAI, systèmes temps réel ou ML industriel/financier.<br><span style="font-size:.85rem;color:rgba(240,248,255,.55);">Disponibilité aménagée dès mars 2026 — temps plein septembre 2026.</span></p>
+    <h2 class="sec-title reveal visible" style="text-align:center;"><span class="hi">Construisons</span> la suite<span class="lo">// LET'S CONNECT</span></h2>
+    <p class="contact-sub reveal visible">Ouvert aux opportunités en <strong style="color:var(--orange)">CDI — AI Engineer · Machine Learning Engineer · Data Scientist · GenAI / LLM Engineer</strong> et aux rôles en IA appliquée.<br><span style="font-size:.85rem;color:rgba(240,248,255,.55);">AI Engineering · Data Science · Generative AI — From Data to Deployment.</span></p>
     <div class="contact-grid reveal visible">
-      <a href="mailto:hakim.djomo@aivancity.education"><span>hakim.djomo@aivancity.education</span></a>
-      <a href="tel:0610844577" class="c-link">📞 +336 10 84 45 77</a>
+      <a href="mailto:hakim.djomo@aivancity.education" class="c-link">✉ Email</a>
+      <a href="tel:+33610844577" class="c-link">📞 +33 6 10 84 45 77</a>
       <a href="https://www.linkedin.com/in/hakim-djomo-go%C3%AFmba-914286259/" target="_blank" class="c-link">⬡ LinkedIn</a>
       <a href="https://github.com/hakimoney" target="_blank" class="c-link">⌥ GitHub</a>
-      <a href="#" class="c-link">📍 Paris, France</a>
+      <a href="https://hakimdjomo.com" target="_blank" class="c-link">◈ hakimdjomo.com</a>
     </div>
   </div>
 </section>
 
 <footer>
   <span>© 2026 <span class="fa">Hakim DJOMO GOÏMBA</span></span>
-  <span>MSc AI · Deep Learning Scientist · <span class="fa">Open to CDI &amp; Thèse</span></span>
+  <span>AI Engineering · Data Science · Generative AI · <span class="fa">From Data to Deployment</span></span>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -795,7 +638,17 @@ document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.le
 const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*70);});},{threshold:.07,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
-<script src="portfolio-cms.js"></script>
+<script>
+(function(){
+  const marker='hakim-portfolio-linkedin-refresh-20260929';
+  if(!localStorage.getItem(marker)){
+    localStorage.removeItem('hakim-portfolio-content-v1');
+    localStorage.setItem('hakim-portfolio-migration-hero-v2','1');
+    localStorage.setItem(marker,'1');
+  }
+})();
+</script>
+
 
 
 </body></html>
